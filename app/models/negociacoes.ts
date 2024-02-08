@@ -8,7 +8,7 @@ export class Negociacoes {
         
     }
 
-    get negociacoes(){
+    list(){
         return this._negociacoes;
     }
 }
