@@ -16,8 +16,6 @@ export class NegociacaoController extends Negociacoes {
      adicionar():void {
         const NovaNegociacao = this.criarNegociacao();
         this.adiciona(NovaNegociacao);
-        this.negociacoes.pop();
-        console.log(this.negociacoes);
         this.limparFormulario();
      }
 
