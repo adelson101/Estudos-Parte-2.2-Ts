@@ -1,5 +1,5 @@
 export class NegociacoesView {
-    template() {
+    template(tabela) {
         return `
         <table class="table table-hover table-bordered">
             <thead>
@@ -10,7 +10,6 @@ export class NegociacoesView {
                 </tr>
             </thead>
             <tbody>
-
             </tbody>
         </table>
         `;
