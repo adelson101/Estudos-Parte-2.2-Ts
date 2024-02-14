@@ -9,24 +9,27 @@ export class NegociacaoController {
      private inputQuantidade: HTMLInputElement;
      private inputValor: HTMLInputElement;
 
-     private negociacoesView = new NegociacoesView('#negociacoesView');
+     private negociacoesView = new NegociacoesView('#negociacoesView',true);
      private mensagemView = new MensagemView('#mensagemView');
      private negociacoes = new Negociacoes();
 
      constructor() {
-        this.inputData = document.querySelector('#data');
-        this.inputQuantidade = document.querySelector('#quantidade');
-        this.inputValor = document.querySelector('#valor');
+        this.inputData = document.querySelector('#data') as HTMLInputElement;
+        this.inputQuantidade = document.querySelector('#quantidade') as HTMLInputElement;
+        this.inputValor = document.querySelector('#valor') as HTMLInputElement;
         this.negociacoesView.Update(this.negociacoes);
      }
 
      public adicionar():void {
-        const NovaNegociacao = this.criarNegociacao();
+        const NovaNegociacao = Negociacao.AhCriar(
+         this.inputData.value,
+         this.inputQuantidade.value,
+         this.inputValor.value
+        );
         if(!this.DiaUtil(NovaNegociacao.data) ) {
             this.mensagemView.Update('Apenas negociações em dias úteis são aceitas');
             return;
          }
-
          this.negociacoes.adiciona(NovaNegociacao);
          this.AtualizaView();
          this.limparFormulario();
@@ -34,15 +37,6 @@ export class NegociacaoController {
 
      private DiaUtil(data: Date) {
          return data.getDay() > DiasDaSemana.DOMINGO && data.getDay() < DiasDaSemana.SABADO;
-     }
-
-     private criarNegociacao():Negociacao {
-        const exp = /-/g; 
-        const data = new Date(this.inputData.value.replace(exp,","));
-        const quantidade = parseInt(this.inputQuantidade.value);
-        const valor = parseFloat(this.inputValor.value);
-        
-        return new Negociacao(data,quantidade,valor);
      }
 
      private limparFormulario():void {
