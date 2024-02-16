@@ -1,10 +1,9 @@
-export function domInject(select) {
-    return function (target, propetyKey, descriptor) {
-        const ModeloOriginal = descriptor.value;
-        descriptor.value = function (...args) {
-            const retorno = descriptor.value;
-            return retorno;
+export function domInject(seletor) {
+    return function (target, propetyKey) {
+        const getter = function () {
+            const elemento = document.querySelector(seletor);
+            return elemento;
         };
-        return descriptor;
+        console.log(target);
     };
 }

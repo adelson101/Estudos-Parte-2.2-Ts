@@ -5,6 +5,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { logarTempoDeExecucao } from "../decorators/LogarTempoDeExecusao.js";
+import { domInject } from "../decorators/domInject.js";
 import { DiasDaSemana } from "../enums/DiasDaSemana.js";
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
@@ -44,6 +45,9 @@ export class NegociacaoController {
         this.mensagemView.Update('Cadastrado com Sucesso');
     }
 }
+__decorate([
+    domInject('#data')
+], NegociacaoController.prototype, "inputData", void 0);
 __decorate([
     logarTempoDeExecucao(true)
 ], NegociacaoController.prototype, "adicionar", null);

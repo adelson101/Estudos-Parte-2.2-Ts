@@ -1,4 +1,5 @@
 import { logarTempoDeExecucao } from "../decorators/LogarTempoDeExecusao.js";
+import { domInject } from "../decorators/domInject.js";
 import { DiasDaSemana } from "../enums/DiasDaSemana.js";
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
@@ -6,6 +7,7 @@ import { MensagemView } from "../views/mensagemView.js";
 import { NegociacoesView } from "../views/negociacoesView.js";
 
 export class NegociacaoController {
+    @domInject('#data')
      private inputData: HTMLInputElement;
      private inputQuantidade: HTMLInputElement;
      private inputValor: HTMLInputElement;
