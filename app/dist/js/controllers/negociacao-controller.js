@@ -12,7 +12,7 @@ import { MensagemView } from "../views/mensagemView.js";
 import { NegociacoesView } from "../views/negociacoesView.js";
 export class NegociacaoController {
     constructor() {
-        this.negociacoesView = new NegociacoesView('#negociacoesView', true);
+        this.negociacoesView = new NegociacoesView('#negociacoesView');
         this.mensagemView = new MensagemView('#mensagemView');
         this.negociacoes = new Negociacoes();
         this.inputData = document.querySelector('#data');
@@ -45,5 +45,5 @@ export class NegociacaoController {
     }
 }
 __decorate([
-    logarTempoDeExecucao()
+    logarTempoDeExecucao(true)
 ], NegociacaoController.prototype, "adicionar", null);

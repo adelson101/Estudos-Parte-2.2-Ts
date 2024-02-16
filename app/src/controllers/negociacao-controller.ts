@@ -9,8 +9,8 @@ export class NegociacaoController {
      private inputData: HTMLInputElement;
      private inputQuantidade: HTMLInputElement;
      private inputValor: HTMLInputElement;
-
-     private negociacoesView = new NegociacoesView('#negociacoesView',true);
+     
+     private negociacoesView = new NegociacoesView('#negociacoesView');
      private mensagemView = new MensagemView('#mensagemView');
      private negociacoes = new Negociacoes();
 
@@ -21,7 +21,7 @@ export class NegociacaoController {
         this.negociacoesView.Update(this.negociacoes);
      }
 
-     @logarTempoDeExecucao()
+     @logarTempoDeExecucao(true)
      public adicionar():void {
         const NovaNegociacao = Negociacao.AhCriar(
          this.inputData.value,
