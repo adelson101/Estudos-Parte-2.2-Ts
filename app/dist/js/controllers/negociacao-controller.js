@@ -16,9 +16,6 @@ export class NegociacaoController {
         this.negociacoesView = new NegociacoesView('#negociacoesView');
         this.mensagemView = new MensagemView('#mensagemView');
         this.negociacoes = new Negociacoes();
-        this.inputData = document.querySelector('#data');
-        this.inputQuantidade = document.querySelector('#quantidade');
-        this.inputValor = document.querySelector('#valor');
         this.negociacoesView.Update(this.negociacoes);
     }
     adicionar() {
@@ -48,6 +45,12 @@ export class NegociacaoController {
 __decorate([
     domInject('#data')
 ], NegociacaoController.prototype, "inputData", void 0);
+__decorate([
+    domInject('#quantidade')
+], NegociacaoController.prototype, "inputQuantidade", void 0);
+__decorate([
+    domInject('#valor')
+], NegociacaoController.prototype, "inputValor", void 0);
 __decorate([
     logarTempoDeExecucao(true)
 ], NegociacaoController.prototype, "adicionar", null);
