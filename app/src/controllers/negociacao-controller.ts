@@ -38,6 +38,14 @@ export class NegociacaoController {
          this.limparFormulario();
      }
 
+    async importarDados() {
+        const Bd = await fetch('http://localhost:8080/dados');
+        const DadosJson = await Bd.json();
+        console.log(DadosJson);
+        
+
+     }
+
      private DiaUtil(data: Date) {
          return data.getDay() > DiasDaSemana.DOMINGO && data.getDay() < DiasDaSemana.SABADO;
      }
