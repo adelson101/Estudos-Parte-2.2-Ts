@@ -18,6 +18,7 @@ import { domInject } from "../decorators/domInject.js";
 import { DiasDaSemana } from "../enums/DiasDaSemana.js";
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
+import { NegociacoesService } from "../services/negociacoesServices.js";
 import { MensagemView } from "../views/mensagemView.js";
 import { NegociacoesView } from "../views/negociacoesView.js";
 export class NegociacaoController {
@@ -25,6 +26,7 @@ export class NegociacaoController {
         this.negociacoesView = new NegociacoesView('#negociacoesView');
         this.mensagemView = new MensagemView('#mensagemView');
         this.negociacoes = new Negociacoes();
+        this.negociacaoServico = new NegociacoesService();
         this.negociacoesView.Update(this.negociacoes);
     }
     adicionar() {
@@ -39,9 +41,11 @@ export class NegociacaoController {
     }
     importarDados() {
         return __awaiter(this, void 0, void 0, function* () {
-            const Bd = yield fetch('http://localhost:8080/dados');
-            const DadosJson = yield Bd.json();
-            console.log(DadosJson);
+            const DadosJson = yield this.negociacaoServico.obterNegociacoesDoDia();
+            DadosJson.forEach((dado) => {
+                this.negociacoes.adiciona(dado);
+            });
+            this.AtualizaView();
         });
     }
     DiaUtil(data) {
