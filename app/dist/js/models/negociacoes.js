@@ -8,4 +8,7 @@ export class Negociacoes {
     list() {
         return this.negociacoes;
     }
+    ObjetoString() {
+        return JSON.stringify(this.negociacoes);
+    }
 }

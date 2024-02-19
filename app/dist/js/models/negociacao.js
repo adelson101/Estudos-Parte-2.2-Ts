@@ -18,4 +18,15 @@ export class Negociacao {
         const valor = parseFloat(stringValor);
         return new Negociacao(data, quantidade, valor);
     }
+    ehIgual(negociacao) {
+        return this.data.getDate() === negociacao.data.getDate() && this.data.getMonth() === negociacao.data.getMonth() && this.data.getFullYear() === negociacao.data.getFullYear()
+            && this._quantidade === negociacao._quantidade && this._valor === negociacao._valor;
+    }
+    ObjetoString() {
+        return `
+            Data: ${this._data}\n
+            Quantidade: ${this._quantidade}\n
+            Valor: ${this._valor}
+        `;
+    }
 }

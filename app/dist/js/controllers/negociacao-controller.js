@@ -36,20 +36,28 @@ export class NegociacaoController {
             return;
         }
         this.negociacoes.adiciona(NovaNegociacao);
+        console.table(NovaNegociacao.ObjetoString());
         this.AtualizaView();
         this.limparFormulario();
     }
     importarDados() {
         return __awaiter(this, void 0, void 0, function* () {
             const DadosJson = yield this.negociacaoServico.obterNegociacoesDoDia();
-            DadosJson.forEach((dado) => {
-                this.negociacoes.adiciona(dado);
+            let DadosJsonFilter = DadosJson.filter((NegociacaoDoDia) => {
+                return !this.negociacoes.list().some((negociacao) => negociacao.ehIgual(NegociacaoDoDia));
             });
+            console.log(DadosJsonFilter);
+            DadosJsonFilter.forEach((negociacao) => {
+                this.negociacoes.adiciona(negociacao);
+            });
+            console.log(this.negociacoes.ObjetoString());
             this.AtualizaView();
         });
     }
     DiaUtil(data) {
         return data.getDay() > DiasDaSemana.DOMINGO && data.getDay() < DiasDaSemana.SABADO;
+    }
+    ViewTabela() {
     }
     limparFormulario() {
         this.inputData.value = '';
