@@ -35,7 +35,9 @@ export class NegociacaoController {
             this.mensagemView.Update('Apenas negociações em dias úteis são aceitas');
             return;
         }
-        this.negociacoes.adiciona(NovaNegociacao);
+        if (this.negociacoes.ehIgual(this.negociacoes)) {
+            this.negociacoes.adiciona(NovaNegociacao);
+        }
         console.table(NovaNegociacao.ObjetoString());
         this.AtualizaView();
         this.limparFormulario();
@@ -56,8 +58,6 @@ export class NegociacaoController {
     }
     DiaUtil(data) {
         return data.getDay() > DiasDaSemana.DOMINGO && data.getDay() < DiasDaSemana.SABADO;
-    }
-    ViewTabela() {
     }
     limparFormulario() {
         this.inputData.value = '';
@@ -82,3 +82,4 @@ __decorate([
 __decorate([
     logarTempoDeExecucao(true)
 ], NegociacaoController.prototype, "adicionar", null);
+//# sourceMappingURL=negociacao-controller.js.map

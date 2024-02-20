@@ -30,3 +30,4 @@ export class Negociacao {
         `;
     }
 }
+//# sourceMappingURL=negociacao.js.map

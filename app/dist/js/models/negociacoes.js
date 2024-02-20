@@ -11,4 +11,8 @@ export class Negociacoes {
     ObjetoString() {
         return JSON.stringify(this.negociacoes);
     }
+    ehIgual(objeto) {
+        return JSON.stringify(this.negociacoes) === JSON.stringify(objeto.list());
+    }
 }
+//# sourceMappingURL=negociacoes.js.map
